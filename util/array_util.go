@@ -57,3 +57,22 @@ func ArrayMax(numbers []int) int {
 	}
 	return result
 }
+
+func ArrayFind(numbers []int, val int) []int {
+	idxs := make([]int, 0)
+	for i, number := range numbers {
+		if number == val {
+			idxs = append(idxs, i)
+		}
+	}
+	return idxs
+}
+
+func ArrayFindFirst(numbers []int, val int) int {
+	for i, number := range numbers {
+		if number == val {
+			return i
+		}
+	}
+	return -1
+}
