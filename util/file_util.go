@@ -23,6 +23,23 @@ func FileToLines(path string) ([]string, error) {
 	return lines, scanner.Err()
 }
 
+func FileToGrid(path string) ([][]rune, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+
+	defer file.Close()
+
+	var grid [][]rune
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		grid = append(grid, []rune(line))
+	}
+	return grid, scanner.Err()
+}
+
 func FileToLineGroups(path string) ([][]string, error) {
 	file, err := os.Open(path)
 	if err != nil {
