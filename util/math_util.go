@@ -1,5 +1,7 @@
 package util
 
+import "cmp"
+
 // greatest common divisor (GCD) via Euclidean algorithm
 func GCD(a, b int) int {
 	for b != 0 {
@@ -21,7 +23,7 @@ func LCM(a, b int, integers ...int) int {
 	return result
 }
 
-func MinInt(a, b int) int {
+func Min[T cmp.Ordered](a, b T) T {
 	if a < b {
 		return a
 	} else {
@@ -29,7 +31,7 @@ func MinInt(a, b int) int {
 	}
 }
 
-func MaxInt(a, b int) int {
+func Max[V cmp.Ordered](a, b V) V {
 	if a > b {
 		return a
 	} else {

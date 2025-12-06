@@ -44,8 +44,8 @@ func calcMaxs(lines [][]int) ([]Maxs, error) {
 		for i := 1; i < len(line)-1; i++ {
 			j := lineLen - 2 - i
 
-			left[i] = util.MaxInt(left[i-1], line[i])
-			right[j] = util.MaxInt(right[j+1], line[j+1])
+			left[i] = util.Max(left[i-1], line[i])
+			right[j] = util.Max(right[j+1], line[j+1])
 		}
 
 		maxs := Maxs{
@@ -65,7 +65,7 @@ func calcLargestJoltages(maxs []Maxs) []int {
 	for _, max := range maxs {
 		maxJoltage := 0
 		for i := 0; i < len(max.left); i++ {
-			maxJoltage = util.MaxInt(maxJoltage, max.left[i]*10+max.right[i])
+			maxJoltage = util.Max(maxJoltage, max.left[i]*10+max.right[i])
 		}
 
 		largestJoltages = append(largestJoltages, maxJoltage)
